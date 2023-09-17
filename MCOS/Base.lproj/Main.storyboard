@@ -16,12 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnD-54-UXl">
+                                <rect key="frame" x="75" y="738" width="242" height="80"/>
+                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbz-w7-7Rg">
                                 <rect key="frame" x="152" y="695" width="89" height="35"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="89" id="g0R-43-aRw"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -30,11 +30,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="13w-Bj-slu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kbz-w7-7Rg" secondAttribute="trailing" constant="152" id="2CW-WB-hNi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YnD-54-UXl" secondAttribute="trailing" constant="76" id="DR3-tE-yyg"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Kbz-w7-7Rg" secondAttribute="bottom" constant="88" id="Lsu-L9-dCx"/>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ODe-Cw-zti"/>
                             <constraint firstItem="Kbz-w7-7Rg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="136" id="OJd-0L-DYP"/>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="top" secondItem="Kbz-w7-7Rg" secondAttribute="bottom" constant="8" id="TcB-jW-IYO"/>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="Ztf-Qq-f8Q"/>
+                            <constraint firstItem="Kbz-w7-7Rg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="152" id="dr7-eF-EIf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YnD-54-UXl" secondAttribute="trailing" constant="76" id="jFz-VH-JPp"/>
                             <constraint firstItem="Kbz-w7-7Rg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="636" id="nWD-9U-Agn"/>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qVB-UV-Mqd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerview" destination="YnD-54-UXl" id="bUB-V7-wJ1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9p-YG-hWd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TCR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9p-YG-hWd">
                                 <rect key="frame" x="146" y="249" width="100" height="61"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -84,7 +96,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDz-kK-FvN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDz-kK-FvN">
                                 <rect key="frame" x="147" y="204" width="98" height="59"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                 <constraints>
@@ -123,7 +135,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E0-1X-Myw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watchlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E0-1X-Myw">
                                 <rect key="frame" x="142" y="226" width="108" height="63"/>
                                 <color key="backgroundColor" systemColor="systemMintColor"/>
                                 <constraints>
@@ -159,7 +171,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgz-QG-ZRx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Depot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgz-QG-ZRx">
                                 <rect key="frame" x="153" y="163" width="86" height="54"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
@@ -174,10 +186,13 @@
                         <viewLayoutGuide key="safeArea" id="Nd3-lc-1Td"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
+                            <constraint firstItem="Lgz-QG-ZRx" firstAttribute="top" secondItem="Nd3-lc-1Td" secondAttribute="top" constant="104" id="8WP-vr-VkH"/>
                             <constraint firstItem="Lgz-QG-ZRx" firstAttribute="centerX" secondItem="Vq3-ZY-p3B" secondAttribute="centerX" constant="-0.5" id="JyO-Ys-6Hg"/>
                             <constraint firstItem="Lgz-QG-ZRx" firstAttribute="top" secondItem="Nd3-lc-1Td" secondAttribute="top" constant="104" id="W7i-o8-xGg"/>
+                            <constraint firstItem="Nd3-lc-1Td" firstAttribute="trailing" secondItem="Lgz-QG-ZRx" secondAttribute="trailing" constant="154" id="c1X-dD-Zh7"/>
                             <constraint firstItem="Lgz-QG-ZRx" firstAttribute="leading" secondItem="Nd3-lc-1Td" secondAttribute="leading" constant="153" id="lEE-ir-nMC"/>
                             <constraint firstItem="Nd3-lc-1Td" firstAttribute="bottom" secondItem="Lgz-QG-ZRx" secondAttribute="bottom" constant="601" id="mIc-bO-9wd"/>
+                            <constraint firstItem="Lgz-QG-ZRx" firstAttribute="leading" secondItem="Nd3-lc-1Td" secondAttribute="leading" constant="153" id="wVt-Kg-ifI"/>
                         </constraints>
                     </view>
                     <connections>
