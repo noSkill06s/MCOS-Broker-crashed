@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
         childTCRViewController.didMove(toParent: self)
         
         // Schritt 4: Anfangszustand festlegen
-        childDepotViewController.view.isHidden = true
+        childDepotViewController.view.isHidden = false
         childWatchlistViewController.view.isHidden = true
         childChartViewController.view.isHidden = true
         childTCRViewController.view.isHidden = true
