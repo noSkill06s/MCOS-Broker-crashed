@@ -10,6 +10,8 @@ import UIKit
 
 class ChartViewController: UIViewController, CPTBarPlotDataSource, CALayerDelegate, CPTAxisDelegate {
     
+    //@IBOutlet weak var viewChildChartViewController: UILabel!
+    
     var searchStock = "AAPL" //Hier kommt der Input dann vom SearchController aktuell pseudo AAPL
     var stockProfileManager: StockProfileManager?
     var stockDataManager: StockDataManager?
@@ -47,7 +49,7 @@ class ChartViewController: UIViewController, CPTBarPlotDataSource, CALayerDelega
         startPulsingLastPoint = PulsingManager(controller: self)
         startPulsingLastPoint?.startPulsingLastPoint()
         chartDataLoadManager = ChartDataManager(controller: self) // Beachten Sie die Namensänderung
-        chartDataLoadManager?.loadChartData(with: .fifteenMinutes) // Einheitlicher Zeitrahmen
+        chartDataLoadManager?.loadChartData(with: .fiveMinutes) // Einheitlicher Zeitrahmen
 
         updateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: stockDataManager!, selector: #selector(StockDataManager.updateLastDataPoint), userInfo: nil, repeats: true)
         if let startPulsingLastPoint = startPulsingLastPoint {
