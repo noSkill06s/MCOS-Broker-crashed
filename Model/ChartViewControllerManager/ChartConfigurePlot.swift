@@ -15,7 +15,7 @@ func configurePlot(for graphView: CPTGraphHostingView, dataSource: CPTScatterPlo
     mainPlotLineStyle.lineJoin = .round
     mainPlotLineStyle.lineCap = .round
     mainPlotLineStyle.lineWidth = 2
-    mainPlotLineStyle.lineColor = CPTColor.white()
+    mainPlotLineStyle.lineColor = CPTColor.purple()
     mainPlot.dataLineStyle = mainPlotLineStyle
     mainPlot.curvedInterpolationOption = .catmullCustomAlpha
     mainPlot.interpolation = .linear
@@ -27,7 +27,7 @@ func configurePlot(for graphView: CPTGraphHostingView, dataSource: CPTScatterPlo
     lastPointPlotLineStyle.lineJoin = .round
     lastPointPlotLineStyle.lineCap = .round
     lastPointPlotLineStyle.lineWidth = 4 // Größere Linienbreite
-    lastPointPlotLineStyle.lineColor = CPTColor.white() // Rote Farbe für den letzten Punkt
+    lastPointPlotLineStyle.lineColor = CPTColor.purple() // Rote Farbe für den letzten Punkt
     lastPointPlot.dataLineStyle = lastPointPlotLineStyle
     lastPointPlot.curvedInterpolationOption = .catmullCustomAlpha
     lastPointPlot.interpolation = .linear
@@ -45,6 +45,8 @@ func configurePlot(for graphView: CPTGraphHostingView, dataSource: CPTScatterPlo
     graph.add(mainPlot, to: graph.defaultPlotSpace)
     graph.add(lastPointPlot, to: graph.defaultPlotSpace)
 }
+
+
 
 
 

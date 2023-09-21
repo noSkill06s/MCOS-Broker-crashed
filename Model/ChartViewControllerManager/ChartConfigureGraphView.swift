@@ -8,14 +8,14 @@
 import CorePlot
 import UIKit
 
-func configureGraphView(for graphView: CPTGraphHostingView, plotData: [StockDataPoint], delegate: CPTAxisDelegate) {
+func configureGraphView(for graphView: CPTGraphHostingView, plotData: [StockDataPoint], delegate: CPTAxisDelegate, traitCollection: UITraitCollection) {
     graphView.allowPinchScaling = false
             
     // Configure graph
     let graph = CPTXYGraph(frame: graphView.bounds)
     graph.plotAreaFrame?.masksToBorder = false
     graphView.hostedGraph = graph
-    graph.backgroundColor = UIColor.black.cgColor
+    graph.backgroundColor = UIColor.systemBackground.cgColor
     graph.paddingBottom = 40.0
     graph.paddingLeft = 50.0 // ursprünglich 40
     graph.paddingTop = 30.0
@@ -50,9 +50,10 @@ func configureGraphView(for graphView: CPTGraphHostingView, plotData: [StockData
 
     // Configure axes
     let axisSet = graph.axisSet as! CPTXYAxisSet
+    let axisColor = axisColorBasedOnMode(traitCollection: traitCollection)
     
     let axisTextStyle = CPTMutableTextStyle()
-    axisTextStyle.color = CPTColor.white()
+    axisTextStyle.color = axisColor
     axisTextStyle.fontName = "HelveticaNeue-Bold"
     axisTextStyle.fontSize = 10.0
     axisTextStyle.textAlignment = .center
@@ -60,14 +61,13 @@ func configureGraphView(for graphView: CPTGraphHostingView, plotData: [StockData
     lineStyle.lineColor = CPTColor.white()
     lineStyle.lineWidth = 5
     let gridLineStyle = CPTMutableLineStyle()
-    //gridLineStyle.lineColor = CPTColor.gray()
-    //gridLineStyle.lineWidth = 0.5
-
+    
     if let x = axisSet.xAxis {
         x.majorIntervalLength   = 1.0 // Setzen Sie das Intervall auf 1, da jeder Punkt einen Abstand von 1 hat
         x.minorTicksPerInterval = 0
         x.labelTextStyle = axisTextStyle
         x.minorGridLineStyle = gridLineStyle
+        lineStyle.lineColor = axisColor
         x.axisLineStyle = lineStyle  // Behalten Sie diese Zeile bei, um die Achsenlinie zu behalten
         x.axisConstraints = CPTConstraints(lowerOffset: 0.0)
         x.delegate = delegate
@@ -81,16 +81,24 @@ func configureGraphView(for graphView: CPTGraphHostingView, plotData: [StockData
         x.labelRotation = CGFloat(Double.pi / 4) // Drehen Sie die Labels für bessere Sichtbarkeit
     }
 
-
-
     if let y = axisSet.yAxis {
         y.majorIntervalLength = NSNumber(value: majorInterval) // Setzen Sie den berechneten Wert hier
         y.minorTicksPerInterval = 5 // Dieser Wert hängt von dem Bereich Ihrer Schlusskurse ab und sollte entsprechend angepasst werden
-        y.minorGridLineStyle = gridLineStyle
         y.labelTextStyle = axisTextStyle
-        y.alternatingBandFills = [CPTFill(color: CPTColor.init(componentRed: 255, green: 255, blue: 255, alpha: 0.03)),CPTFill(color: CPTColor.black())]
+        lineStyle.lineColor = axisColor
         y.axisLineStyle = lineStyle
         y.axisConstraints = CPTConstraints(lowerOffset: 0.0)
         y.delegate = delegate
     }
 }
+
+
+// Chart Farben werden an Modus von iPhone gekoppelt
+func axisColorBasedOnMode(traitCollection: UITraitCollection) -> CPTColor {
+    if traitCollection.userInterfaceStyle == .dark {
+        return CPTColor.white() // Weiß für Dunkelmodus
+    } else {
+        return CPTColor.black() // Schwarz für Hellmodus
+    }
+}
+

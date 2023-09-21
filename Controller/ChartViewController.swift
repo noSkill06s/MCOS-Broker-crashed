@@ -58,10 +58,20 @@ class ChartViewController: UIViewController, CPTBarPlotDataSource, CALayerDelega
     }
 
     func initializeGraph() {
-        configureGraphView(for: graphView, plotData: plotData, delegate: self)
+        configureGraphView(for: graphView, plotData: plotData, delegate: self, traitCollection: self.traitCollection) // Übergeben Sie die Farbe als zusätzlichen Parameter
         configurePlot(for: graphView, dataSource: self, delegate: self)
     }
-        
+    
+    // Veränderungen im Viewcontroller registrieren
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            initializeGraph() // Graphen neu initialisieren, wenn sich der Farbmodus ändert
+        }
+    }
+
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         updateTimer?.invalidate()
@@ -107,10 +117,11 @@ extension ChartViewController: CPTScatterPlotDataSource, CPTScatterPlotDelegate 
     func symbol(for plot: CPTScatterPlot, record idx: UInt) -> CPTPlotSymbol? {
         if idx == self.plotData.count - 1 {  // Überprüfen, ob es der letzte Datenpunkt ist
             let plotSymbol = CPTPlotSymbol.ellipse()
-            plotSymbol.fill = CPTFill(color: CPTColor.orange())
+            plotSymbol.fill = CPTFill(color: CPTColor.purple())
             plotSymbol.size = lastPointSymbolSize  // Verwenden Sie die Instanzvariable
             return plotSymbol
         }
         return nil  // Für andere Datenpunkte kein spezielles Symbol
     }
 }
+
