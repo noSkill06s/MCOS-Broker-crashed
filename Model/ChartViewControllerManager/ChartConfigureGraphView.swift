@@ -102,3 +102,4 @@ func axisColorBasedOnMode(traitCollection: UITraitCollection) -> CPTColor {
     }
 }
 
+

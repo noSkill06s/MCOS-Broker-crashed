@@ -5,6 +5,7 @@
 //  Created by Burhan Cankurt on 10.09.23.
 //
 
+import CorePlot
 import UIKit
 
 class StockDataManager {
@@ -34,6 +35,14 @@ class StockDataManager {
                 DispatchQueue.main.async {
                     self?.viewController?.graphView.hostedGraph?.reloadData()
                     
+                    // Anpassen der Y-Achse nach dem Aktualisieren des letzten Datenpunkts
+                    guard let viewControllerUnwrapped = self?.viewController,
+                          let graph = viewControllerUnwrapped.graphView.hostedGraph else {
+                        print("ViewController oder Graph ist nicht verfügbar.")
+                        return
+                    }
+                    adjustYAxisRange(for: viewControllerUnwrapped.plotData, graph: graph)
+
                     if let lastDataPoint = self?.viewController?.plotData.last,
                        let firstDataPoint = self?.viewController?.plotData.first {
                         let range = "\(firstDataPoint.close) - \(lastDataPoint.close)"
@@ -54,4 +63,16 @@ class StockDataManager {
             }
         }
     }
+}
+
+// Chart Preisskala Adjustierung (dramatischer Anstieg oder Fall)
+func adjustYAxisRange(for plotData: [StockDataPoint], graph: CPTGraph) {
+    guard let yAxis = (graph.axisSet as? CPTXYAxisSet)?.yAxis else { return }
+    let yMin = plotData.min(by: { $0.close < $1.close })?.close ?? 0
+    let yMax = plotData.max(by: { $0.close < $1.close })?.close ?? 0
+    let yRange = yMax - yMin
+    let paddingPercentage = 0.05
+    let yMinAdjusted = yMin - (yRange * paddingPercentage)
+    let yMaxAdjusted = yMax + (yRange * paddingPercentage)
+    yAxis.visibleRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(yMinAdjusted), lengthDecimal: CPTDecimalFromDouble(yMaxAdjusted - yMinAdjusted))
 }

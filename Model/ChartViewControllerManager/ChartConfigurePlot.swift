@@ -11,6 +11,13 @@ import UIKit
 func configurePlot(for graphView: CPTGraphHostingView, dataSource: CPTScatterPlotDataSource, delegate: CPTScatterPlotDelegate) {
     // Hauptplot
     let mainPlot = CPTScatterPlot()
+    let fillColor = CPTColor.purple().withAlphaComponent(0.2) // Halbtransparentes Grün für den gefüllten Bereich
+    let fill = CPTFill(color: fillColor)
+    mainPlot.areaFill = fill
+    mainPlot.areaBaseValue = NSNumber(value: 0.0) // Startet die Füllung bei y=0
+
+    
+    
     let mainPlotLineStyle = CPTMutableLineStyle()
     mainPlotLineStyle.lineJoin = .round
     mainPlotLineStyle.lineCap = .round

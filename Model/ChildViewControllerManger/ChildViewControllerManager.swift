@@ -60,7 +60,7 @@ func setupChildViewControllers(for parentVC: HomeViewController) {
     
     // Schritt 6: ChildViewController View festlegen
     let safeAreaTopInset = parentVC.view.safeAreaInsets.top
-    let height = (parentVC.view.bounds.height - safeAreaTopInset) * 0.75
+    let height = (parentVC.view.bounds.height - safeAreaTopInset) * 0.85
 
     let yPosition = safeAreaTopInset
 

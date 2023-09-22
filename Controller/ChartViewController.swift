@@ -49,7 +49,7 @@ class ChartViewController: UIViewController, CPTBarPlotDataSource, CALayerDelega
         startPulsingLastPoint = PulsingManager(controller: self)
         startPulsingLastPoint?.startPulsingLastPoint()
         chartDataLoadManager = ChartDataManager(controller: self) // Beachten Sie die Namensänderung
-        chartDataLoadManager?.loadChartData(with: .fiveMinutes) // Einheitlicher Zeitrahmen
+        chartDataLoadManager?.loadChartData(with: .oneDay) // Einheitlicher Zeitrahmen
 
         updateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: stockDataManager!, selector: #selector(StockDataManager.updateLastDataPoint), userInfo: nil, repeats: true)
         if let startPulsingLastPoint = startPulsingLastPoint {
