@@ -37,7 +37,7 @@ func configureGraphView(for graphView: CPTGraphHostingView, plotData: [StockData
     let yMax = plotData.max(by: { $0.close < $1.close })?.close ?? 0
 
     let yRange = yMax - yMin
-    let paddingPercentage = 0.05 // 5% Padding
+    let paddingPercentage = 1.00 // 5% Padding
 
     let yMinAdjusted = yMin - (yRange * paddingPercentage)
     let yMaxAdjusted = yMax + (yRange * paddingPercentage)

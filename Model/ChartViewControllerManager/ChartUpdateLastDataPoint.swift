@@ -32,47 +32,35 @@ class StockDataManager {
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    self?.viewController?.graphView.hostedGraph?.reloadData()
-                    
-                    // Anpassen der Y-Achse nach dem Aktualisieren des letzten Datenpunkts
-                    guard let viewControllerUnwrapped = self?.viewController,
-                          let graph = viewControllerUnwrapped.graphView.hostedGraph else {
-                        print("ViewController oder Graph ist nicht verfügbar.")
-                        return
-                    }
-                    adjustYAxisRange(for: viewControllerUnwrapped.plotData, graph: graph)
-
-                    if let lastDataPoint = self?.viewController?.plotData.last,
-                       let firstDataPoint = self?.viewController?.plotData.first {
-                        let range = "\(firstDataPoint.close) - \(lastDataPoint.close)"
-                        self?.viewController?.stockProfileRange.text = "   " + range
-                        
-                        let change = lastDataPoint.close - firstDataPoint.close
-                        self?.viewController?.stockProfileChanges.text = String(format: "%.2f", change)
-                        self?.viewController?.stockCourse.text = "\(lastDataPoint.close)"
-                    }
-                }
-                
             case .failure(let error):
                 if let dataError = error as? DataError, dataError == .unchanged {
-                    return
+                    // Nichts tun, wenn die Daten unverändert sind
                 } else {
-                    print("Error fetching data: \(error)")
+                }
+            }
+            
+            // Always update yRange
+            if let graph = self?.viewController?.graphView.hostedGraph as? CPTXYGraph,
+               let plotSpace = graph.defaultPlotSpace as? CPTXYPlotSpace {
+                if let yMinAdjusted = self?.viewController?.plotData.min(by: { $0.close < $1.close })?.close,
+                   let yMaxAdjusted = self?.viewController?.plotData.max(by: { $0.close < $1.close })?.close {
+                    let yRangePadding = (yMaxAdjusted - yMinAdjusted) * 0.05
+                    plotSpace.yRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(yMinAdjusted - yRangePadding), lengthDecimal: CPTDecimalFromDouble(yMaxAdjusted + yRangePadding - yMinAdjusted))
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self?.viewController?.graphView.hostedGraph?.reloadData()
+                if let lastDataPoint = self?.viewController?.plotData.last,
+                   let firstDataPoint = self?.viewController?.plotData.first {
+                    let range = "\(firstDataPoint.close) - \(lastDataPoint.close)"
+                    self?.viewController?.stockProfileRange.text = "   " + range
+                    let change = lastDataPoint.close - firstDataPoint.close
+                    self?.viewController?.stockProfileChanges.text = String(format: "%.2f", change)
+                    self?.viewController?.stockCourse.text = "\(lastDataPoint.close)"
                 }
             }
         }
     }
 }
 
-// Chart Preisskala Adjustierung (dramatischer Anstieg oder Fall)
-func adjustYAxisRange(for plotData: [StockDataPoint], graph: CPTGraph) {
-    guard let yAxis = (graph.axisSet as? CPTXYAxisSet)?.yAxis else { return }
-    let yMin = plotData.min(by: { $0.close < $1.close })?.close ?? 0
-    let yMax = plotData.max(by: { $0.close < $1.close })?.close ?? 0
-    let yRange = yMax - yMin
-    let paddingPercentage = 0.05
-    let yMinAdjusted = yMin - (yRange * paddingPercentage)
-    let yMaxAdjusted = yMax + (yRange * paddingPercentage)
-    yAxis.visibleRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(yMinAdjusted), lengthDecimal: CPTDecimalFromDouble(yMaxAdjusted - yMinAdjusted))
-}
