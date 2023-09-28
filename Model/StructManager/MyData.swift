@@ -7,6 +7,7 @@
 
 import Foundation
 
+/************************************************************************ChartViewController**************************************************/
 struct MyData: Decodable {
     let date: String
     let close: Double
@@ -24,4 +25,10 @@ struct StockProfile: Decodable {
     let companyName: String
     let currency: String
     let image: String
+}
+/************************************************************************SearchViewController**************************************************/
+struct StockListStruct: Decodable {
+    let symbol: String
+    let name: String?
+
 }

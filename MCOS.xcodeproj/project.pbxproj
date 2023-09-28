@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		703A7E84EFA3218591CD99AC /* Pods_MCOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFAF6A3960710255A4A91CA /* Pods_MCOS.framework */; };
-		7B2350AF2AB7372A003F9C05 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2350AD2AB7372A003F9C05 /* APIService.swift */; };
-		7B2350B02AB7372A003F9C05 /* ChartStockProfileAPIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2350AE2AB7372A003F9C05 /* ChartStockProfileAPIFetcher.swift */; };
+		7B2350AF2AB7372A003F9C05 /* ChartCourseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2350AD2AB7372A003F9C05 /* ChartCourseAPI.swift */; };
+		7B2350B02AB7372A003F9C05 /* ChartStockProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2350AE2AB7372A003F9C05 /* ChartStockProfileAPI.swift */; };
 		7B2350BA2AB73754003F9C05 /* ChartDataLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2350B12AB73753003F9C05 /* ChartDataLoadManager.swift */; };
 		7B2350BB2AB73754003F9C05 /* ChartStartPulsingLastPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2350B22AB73753003F9C05 /* ChartStartPulsingLastPoint.swift */; };
 		7B2350BC2AB73754003F9C05 /* ChartConfigurePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2350B32AB73753003F9C05 /* ChartConfigurePlot.swift */; };
@@ -25,6 +25,8 @@
 		7B490EFA2AB625C400787CEC /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B490EF92AB625C400787CEC /* ChartViewController.swift */; };
 		7B490EFD2AB629B100787CEC /* TCRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B490EFC2AB629B100787CEC /* TCRViewController.swift */; };
 		7B85812D2ABB5CC700241139 /* ChildViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85812C2ABB5CC700241139 /* ChildViewControllerManager.swift */; };
+		7B8D37442AC83D39001CEDD9 /* FetchStockListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D37432AC83D39001CEDD9 /* FetchStockListAPI.swift */; };
+		7B8D37482AC86F63001CEDD9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D37472AC86F63001CEDD9 /* SearchViewController.swift */; };
 		7BB3EC732AB513E50014A652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB3EC722AB513E50014A652 /* AppDelegate.swift */; };
 		7BB3EC752AB513E50014A652 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB3EC742AB513E50014A652 /* SceneDelegate.swift */; };
 		7BB3EC772AB513E50014A652 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB3EC762AB513E50014A652 /* HomeViewController.swift */; };
@@ -36,8 +38,8 @@
 /* Begin PBXFileReference section */
 		0AC9CBBD62AC76C0A5D007DF /* Pods-MCOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCOS.release.xcconfig"; path = "Target Support Files/Pods-MCOS/Pods-MCOS.release.xcconfig"; sourceTree = "<group>"; };
 		5FFAF6A3960710255A4A91CA /* Pods_MCOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B2350AD2AB7372A003F9C05 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		7B2350AE2AB7372A003F9C05 /* ChartStockProfileAPIFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartStockProfileAPIFetcher.swift; sourceTree = "<group>"; };
+		7B2350AD2AB7372A003F9C05 /* ChartCourseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartCourseAPI.swift; sourceTree = "<group>"; };
+		7B2350AE2AB7372A003F9C05 /* ChartStockProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartStockProfileAPI.swift; sourceTree = "<group>"; };
 		7B2350B12AB73753003F9C05 /* ChartDataLoadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataLoadManager.swift; sourceTree = "<group>"; };
 		7B2350B22AB73753003F9C05 /* ChartStartPulsingLastPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartStartPulsingLastPoint.swift; sourceTree = "<group>"; };
 		7B2350B32AB73753003F9C05 /* ChartConfigurePlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartConfigurePlot.swift; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		7B490EF92AB625C400787CEC /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		7B490EFC2AB629B100787CEC /* TCRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCRViewController.swift; sourceTree = "<group>"; };
 		7B85812C2ABB5CC700241139 /* ChildViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewControllerManager.swift; sourceTree = "<group>"; };
+		7B8D37432AC83D39001CEDD9 /* FetchStockListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStockListAPI.swift; sourceTree = "<group>"; };
+		7B8D37472AC86F63001CEDD9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7BB3EC6F2AB513E50014A652 /* MCOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB3EC722AB513E50014A652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BB3EC742AB513E50014A652 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 		7B3459BC2AB732D900905671 /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
+				7B3699C82AC5F23900597E97 /* SearchViewController */,
 				7B3459BD2AB733A400905671 /* ChartViewController */,
 			);
 			path = APIManager;
@@ -131,8 +136,8 @@
 		7B3459BD2AB733A400905671 /* ChartViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7B2350AD2AB7372A003F9C05 /* APIService.swift */,
-				7B2350AE2AB7372A003F9C05 /* ChartStockProfileAPIFetcher.swift */,
+				7B2350AD2AB7372A003F9C05 /* ChartCourseAPI.swift */,
+				7B2350AE2AB7372A003F9C05 /* ChartStockProfileAPI.swift */,
 			);
 			path = ChartViewController;
 			sourceTree = "<group>";
@@ -143,6 +148,14 @@
 				7B2350C32AB7376A003F9C05 /* MyData.swift */,
 			);
 			path = StructManager;
+			sourceTree = "<group>";
+		};
+		7B3699C82AC5F23900597E97 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D37432AC83D39001CEDD9 /* FetchStockListAPI.swift */,
+			);
+			path = SearchViewController;
 			sourceTree = "<group>";
 		};
 		7B490EFB2AB6290F00787CEC /* Controller */ = {
@@ -160,9 +173,26 @@
 		7B85812B2ABB5CA500241139 /* ChildViewControllerManger */ = {
 			isa = PBXGroup;
 			children = (
-				7B85812C2ABB5CC700241139 /* ChildViewControllerManager.swift */,
+				7B8D37452AC86F2F001CEDD9 /* HomeViewController */,
 			);
 			path = ChildViewControllerManger;
+			sourceTree = "<group>";
+		};
+		7B8D37452AC86F2F001CEDD9 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B85812C2ABB5CC700241139 /* ChildViewControllerManager.swift */,
+				7B8D37462AC86F42001CEDD9 /* ChartViewController */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		7B8D37462AC86F42001CEDD9 /* ChartViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D37472AC86F63001CEDD9 /* SearchViewController.swift */,
+			);
+			path = ChartViewController;
 			sourceTree = "<group>";
 		};
 		7BB3EC662AB513E50014A652 = {
@@ -324,6 +354,7 @@
 				7B2350BB2AB73754003F9C05 /* ChartStartPulsingLastPoint.swift in Sources */,
 				7B490EFD2AB629B100787CEC /* TCRViewController.swift in Sources */,
 				7B2350C02AB73754003F9C05 /* ChartTimeFrameButtonTapped.swift in Sources */,
+				7B8D37442AC83D39001CEDD9 /* FetchStockListAPI.swift in Sources */,
 				7B2350C42AB7376A003F9C05 /* MyData.swift in Sources */,
 				7BB3EC772AB513E50014A652 /* HomeViewController.swift in Sources */,
 				7B490EF82AB625A600787CEC /* WatchlistViewController.swift in Sources */,
@@ -332,12 +363,13 @@
 				7B2350BF2AB73754003F9C05 /* ChartLoadChartData.swift in Sources */,
 				7BB3EC752AB513E50014A652 /* SceneDelegate.swift in Sources */,
 				7B490EF62AB6259600787CEC /* DepotViewController.swift in Sources */,
+				7B8D37482AC86F63001CEDD9 /* SearchViewController.swift in Sources */,
 				7B2350C12AB73754003F9C05 /* ChartLoadStockProfile.swift in Sources */,
 				7B2350BA2AB73754003F9C05 /* ChartDataLoadManager.swift in Sources */,
-				7B2350B02AB7372A003F9C05 /* ChartStockProfileAPIFetcher.swift in Sources */,
+				7B2350B02AB7372A003F9C05 /* ChartStockProfileAPI.swift in Sources */,
 				7B85812D2ABB5CC700241139 /* ChildViewControllerManager.swift in Sources */,
 				7B2350BE2AB73754003F9C05 /* ChartConfigureGraphView.swift in Sources */,
-				7B2350AF2AB7372A003F9C05 /* APIService.swift in Sources */,
+				7B2350AF2AB7372A003F9C05 /* ChartCourseAPI.swift in Sources */,
 				7B2350BC2AB73754003F9C05 /* ChartConfigurePlot.swift in Sources */,
 				7B2350BD2AB73754003F9C05 /* ChartFilterData.swift in Sources */,
 				7B490EFA2AB625C400787CEC /* ChartViewController.swift in Sources */,
