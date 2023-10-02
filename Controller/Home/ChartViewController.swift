@@ -58,6 +58,10 @@ class ChartViewController: UIViewController, UITextFieldDelegate, CPTBarPlotData
             return "4Std Chart"
         case .oneDay:
             return "1T Chart"
+        case .oneWeek:
+            return "1W Chart"
+        case .oneMonth:
+            return "1M Chart"
         }
     }
 
@@ -101,7 +105,7 @@ class ChartViewController: UIViewController, UITextFieldDelegate, CPTBarPlotData
     }
 
     func initializeGraph() {
-        configureGraphView(for: graphView, plotData: plotData, delegate: self, traitCollection: self.traitCollection) // Übergeben Sie die Farbe als zusätzlichen Parameter
+        configureGraphView(for: graphView, plotData: plotData, delegate: self, traitCollection: self.traitCollection)
         configurePlot(for: graphView, dataSource: self, delegate: self)
     }
 
@@ -178,6 +182,7 @@ extension ChartViewController: StockSelectionDelegate {
     func stockWasSelected(_ stockSymbol: String) {
         self.searchStock = stockSymbol
         // Aktualisieren Sie den Chart mit dem neuen Symbol
+        self.stockDataManager?.updateLastDataPoint()
         self.stockProfileManager?.loadStockProfile()
         self.chartDataLoadManager?.loadChartData(with: currentChartTimeFrame)
     }

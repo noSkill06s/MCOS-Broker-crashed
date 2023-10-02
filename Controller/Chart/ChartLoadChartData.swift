@@ -18,6 +18,8 @@ func loadChartDataGlobal(with timeFrame: TimeFrame, searchStock: String,fetcher:
     case .oneHour: timeFrameParameter = "1hour"
     case .fourHours: timeFrameParameter = "4hour"
     case .oneDay: timeFrameParameter = "1day"
+    case .oneWeek: timeFrameParameter = "1week"
+    case .oneMonth: timeFrameParameter = "1month"
     }
 
     let url = URL(string: "https://financialmodelingprep.com/api/v3/historical-chart/\(timeFrameParameter)/\(searchStock)?apikey=87508d18defb2ad368deda0763edaaab")!

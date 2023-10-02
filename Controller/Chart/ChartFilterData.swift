@@ -15,6 +15,8 @@ enum TimeFrame {
     case oneHour
     case fourHours
     case oneDay
+    case oneWeek
+    case oneMonth
 }
 
 func filterData(for timeFrame: TimeFrame, data: [(date: String, close: Double)]) -> [(date: String, close: Double)] {

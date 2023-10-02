@@ -10,7 +10,7 @@ import UIKit
 func presentTimeFrameSelector(in controller: UIViewController, selectionHandler: @escaping (TimeFrame) -> Void) {
     let actionSheet = UIAlertController(title: "Select Time Frame", message: nil, preferredStyle: .actionSheet)
     
-    let timeFrames: [TimeFrame] = [.oneMinutes, .fiveMinutes, .fifteenMinutes, .thirtyMinutes, .oneHour, .fourHours, .oneDay]
+    let timeFrames: [TimeFrame] = [.oneMinutes, .fiveMinutes, .fifteenMinutes, .thirtyMinutes, .oneHour, .fourHours, .oneDay, .oneWeek, .oneMonth]
     for timeFrame in timeFrames {
         let actionTitle: String
         switch timeFrame {
@@ -21,6 +21,8 @@ func presentTimeFrameSelector(in controller: UIViewController, selectionHandler:
         case .oneHour: actionTitle = "1 Hour"
         case .fourHours: actionTitle = "4 Hours"
         case .oneDay: actionTitle = "1 Day"
+        case .oneWeek: actionTitle = "1 Week"
+        case .oneMonth: actionTitle = "1 Month"
         }
         
         let action = UIAlertAction(title: actionTitle, style: .default) { _ in
