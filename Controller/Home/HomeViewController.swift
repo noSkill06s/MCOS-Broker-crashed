@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("hello")
         // Erstelle ChildViewController
         setupChildViewControllers(for: self)
         
