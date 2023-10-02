@@ -103,43 +103,26 @@
 				7B85812B2ABB5CA500241139 /* ChildViewControllerManger */,
 				7B3459BE2AB7345900905671 /* StructManager */,
 				7B3459BC2AB732D900905671 /* APIManager */,
-				7B3459BB2AB731FA00905671 /* ChartViewControllerManager */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		7B3459BB2AB731FA00905671 /* ChartViewControllerManager */ = {
-			isa = PBXGroup;
-			children = (
-				7B2350B52AB73753003F9C05 /* ChartConfigureGraphView.swift */,
-				7B2350B32AB73753003F9C05 /* ChartConfigurePlot.swift */,
-				7B2350B12AB73753003F9C05 /* ChartDataLoadManager.swift */,
-				7B2350B42AB73753003F9C05 /* ChartFilterData.swift */,
-				7B2350B62AB73754003F9C05 /* ChartLoadChartData.swift */,
-				7B2350B82AB73754003F9C05 /* ChartLoadStockProfile.swift */,
-				7B2350B22AB73753003F9C05 /* ChartStartPulsingLastPoint.swift */,
-				7B2350B72AB73754003F9C05 /* ChartTimeFrameButtonTapped.swift */,
-				7B2350B92AB73754003F9C05 /* ChartUpdateLastDataPoint.swift */,
-			);
-			path = ChartViewControllerManager;
 			sourceTree = "<group>";
 		};
 		7B3459BC2AB732D900905671 /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
-				7B3699C82AC5F23900597E97 /* SearchViewController */,
-				7B3459BD2AB733A400905671 /* ChartViewController */,
+				7B3459BD2AB733A400905671 /* Chart */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
 		};
-		7B3459BD2AB733A400905671 /* ChartViewController */ = {
+		7B3459BD2AB733A400905671 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				7B8D37432AC83D39001CEDD9 /* FetchStockListAPI.swift */,
 				7B2350AD2AB7372A003F9C05 /* ChartCourseAPI.swift */,
 				7B2350AE2AB7372A003F9C05 /* ChartStockProfileAPI.swift */,
 			);
-			path = ChartViewController;
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		7B3459BE2AB7345900905671 /* StructManager */ = {
@@ -150,15 +133,16 @@
 			path = StructManager;
 			sourceTree = "<group>";
 		};
-		7B3699C82AC5F23900597E97 /* SearchViewController */ = {
+		7B490EFB2AB6290F00787CEC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7B8D37432AC83D39001CEDD9 /* FetchStockListAPI.swift */,
+				7B743F452ACA3AD70082A2F5 /* Home */,
+				7B743F462ACA3AF80082A2F5 /* Chart */,
 			);
-			path = SearchViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		7B490EFB2AB6290F00787CEC /* Controller */ = {
+		7B743F452ACA3AD70082A2F5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				7BB3EC762AB513E50014A652 /* HomeViewController.swift */,
@@ -167,32 +151,40 @@
 				7B490EF52AB6259600787CEC /* DepotViewController.swift */,
 				7B490EF92AB625C400787CEC /* ChartViewController.swift */,
 			);
-			path = Controller;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7B743F462ACA3AF80082A2F5 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				7B8D37472AC86F63001CEDD9 /* SearchViewController.swift */,
+				7B2350B52AB73753003F9C05 /* ChartConfigureGraphView.swift */,
+				7B2350B32AB73753003F9C05 /* ChartConfigurePlot.swift */,
+				7B2350B12AB73753003F9C05 /* ChartDataLoadManager.swift */,
+				7B2350B42AB73753003F9C05 /* ChartFilterData.swift */,
+				7B2350B62AB73754003F9C05 /* ChartLoadChartData.swift */,
+				7B2350B82AB73754003F9C05 /* ChartLoadStockProfile.swift */,
+				7B2350B22AB73753003F9C05 /* ChartStartPulsingLastPoint.swift */,
+				7B2350B72AB73754003F9C05 /* ChartTimeFrameButtonTapped.swift */,
+				7B2350B92AB73754003F9C05 /* ChartUpdateLastDataPoint.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		7B85812B2ABB5CA500241139 /* ChildViewControllerManger */ = {
 			isa = PBXGroup;
 			children = (
-				7B8D37452AC86F2F001CEDD9 /* HomeViewController */,
+				7B8D37452AC86F2F001CEDD9 /* Home */,
 			);
 			path = ChildViewControllerManger;
 			sourceTree = "<group>";
 		};
-		7B8D37452AC86F2F001CEDD9 /* HomeViewController */ = {
+		7B8D37452AC86F2F001CEDD9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				7B85812C2ABB5CC700241139 /* ChildViewControllerManager.swift */,
-				7B8D37462AC86F42001CEDD9 /* ChartViewController */,
 			);
-			path = HomeViewController;
-			sourceTree = "<group>";
-		};
-		7B8D37462AC86F42001CEDD9 /* ChartViewController */ = {
-			isa = PBXGroup;
-			children = (
-				7B8D37472AC86F63001CEDD9 /* SearchViewController.swift */,
-			);
-			path = ChartViewController;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		7BB3EC662AB513E50014A652 = {

@@ -8,7 +8,12 @@
 import CorePlot
 import UIKit
 
+protocol StockSelectionDelegate: AnyObject {
+    func stockWasSelected(_ stockSymbol: String)
+}
+
 class ChartViewController: UIViewController, UITextFieldDelegate, CPTBarPlotDataSource, CALayerDelegate, CPTAxisDelegate {
+    
     
     var currentChartTimeFrame: TimeFrame = .oneMinutes // Start Timeframe
     var searchStock = "AAPL"
@@ -110,13 +115,11 @@ class ChartViewController: UIViewController, UITextFieldDelegate, CPTBarPlotData
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Erstellen einer Instanz von SearchViewController aus dem Storyboard
         if let searchViewController = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
-            // Hinzufügen des SearchViewController zum Navigation-Stack
+            searchViewController.delegate = self
             self.navigationController?.pushViewController(searchViewController, animated: true)
         }
     }
-
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -168,6 +171,15 @@ extension ChartViewController: CPTScatterPlotDataSource, CPTScatterPlotDelegate 
             return plotSymbol
         }
         return nil  // Für andere Datenpunkte kein spezielles Symbol
+    }
+}
+
+extension ChartViewController: StockSelectionDelegate {
+    func stockWasSelected(_ stockSymbol: String) {
+        self.searchStock = stockSymbol
+        // Aktualisieren Sie den Chart mit dem neuen Symbol
+        self.stockProfileManager?.loadStockProfile()
+        self.chartDataLoadManager?.loadChartData(with: currentChartTimeFrame)
     }
 }
 

@@ -9,6 +9,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    weak var delegate: StockSelectionDelegate?
+    
     // Array zum Speichern der StockList
     var stockListArray: [StockListStruct] = []
     
@@ -27,7 +29,7 @@ class SearchViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()       
+        super.viewDidLoad()
         // Set Delegate and DataSource before API call
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,15 +63,20 @@ extension SearchViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let stock = filteredStockListArray[indexPath.row]
         cell.textLabel?.text = stock.symbol
-        
         return cell
     }
+    
 }
 
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedStock = filteredStockListArray[indexPath.row]
+        if let symbol = selectedStock.symbol {
+            delegate?.stockWasSelected(symbol)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -81,7 +88,8 @@ extension SearchViewController: UISearchBarDelegate {
             filteredStockListArray = stockListArray
         } else {
             filteredStockListArray = stockListArray.filter { stock in
-                return stock.symbol.lowercased().contains(searchText.lowercased())
+                return (stock.symbol?.lowercased().contains(searchText.lowercased()) ?? false) ||
+                       (stock.name?.lowercased().contains(searchText.lowercased()) ?? false)
             }
         }
         tableView.reloadData()

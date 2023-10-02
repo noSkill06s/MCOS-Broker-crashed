@@ -28,7 +28,7 @@ struct StockProfile: Decodable {
 }
 /************************************************************************SearchViewController**************************************************/
 struct StockListStruct: Decodable {
-    let symbol: String
+    let symbol: String?
     let name: String?
 
 }
