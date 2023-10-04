@@ -72,9 +72,10 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let stock = filteredStockListArray[indexPath.row]
-        cell.textLabel?.text = stock.symbol
+        cell.textLabel?.text = "\(stock.symbol ?? "N/A") - \(stock.name ?? "N/A")"
         return cell
     }
+
     
 }
 

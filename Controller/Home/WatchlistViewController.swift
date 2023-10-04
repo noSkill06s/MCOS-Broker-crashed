@@ -8,6 +8,8 @@
 import UIKit
 
 class WatchlistViewController: UIViewController {
+    
+    var watchlistArray: [String] = []
 
     @IBOutlet var test: UILabel!
     
