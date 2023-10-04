@@ -14,7 +14,6 @@ class FetchStockListAPI: UIViewController {
     
     // Netzwerkabfrage
     func fetchStockList(completion: @escaping([StockListStruct]?) -> Void) {
-        print("FetchstockListAPI wurde aufgerufen")
         guard let url = URL(string: "https://financialmodelingprep.com/api/v3/stock/list?apikey=87508d18defb2ad368deda0763edaaab") else {return}
         // Starte Netzwerkabfrage "URL" als Parameter
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in

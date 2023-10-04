@@ -32,6 +32,8 @@
 		7BB3EC772AB513E50014A652 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB3EC762AB513E50014A652 /* HomeViewController.swift */; };
 		7BB3EC7A2AB513E50014A652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BB3EC782AB513E50014A652 /* Main.storyboard */; };
 		7BB3EC7F2AB513E70014A652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BB3EC7D2AB513E70014A652 /* LaunchScreen.storyboard */; };
+		7BBB99A82ACC6D94000CE676 /* StockTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB99A72ACC6D94000CE676 /* StockTimeManager.swift */; };
+		7BBB99AA2ACCDBFB000CE676 /* StockSelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB99A92ACCDBFB000CE676 /* StockSelectionDelegate.swift */; };
 		7BD4EDD72ABDF88B0047C55A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BD4EDD62ABDF88B0047C55A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		7BB3EC792AB513E50014A652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7BB3EC7E2AB513E70014A652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7BB3EC802AB513E70014A652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BBB99A72ACC6D94000CE676 /* StockTimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTimeManager.swift; sourceTree = "<group>"; };
+		7BBB99A92ACCDBFB000CE676 /* StockSelectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSelectionDelegate.swift; sourceTree = "<group>"; };
 		7BD4EDD62ABDF88B0047C55A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +171,8 @@
 				7B2350B22AB73753003F9C05 /* ChartStartPulsingLastPoint.swift */,
 				7B2350B72AB73754003F9C05 /* ChartTimeFrameButtonTapped.swift */,
 				7B2350B92AB73754003F9C05 /* ChartUpdateLastDataPoint.swift */,
+				7BBB99A72ACC6D94000CE676 /* StockTimeManager.swift */,
+				7BBB99A92ACCDBFB000CE676 /* StockSelectionDelegate.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				7B2350BF2AB73754003F9C05 /* ChartLoadChartData.swift in Sources */,
 				7BB3EC752AB513E50014A652 /* SceneDelegate.swift in Sources */,
 				7B490EF62AB6259600787CEC /* DepotViewController.swift in Sources */,
+				7BBB99AA2ACCDBFB000CE676 /* StockSelectionDelegate.swift in Sources */,
 				7B8D37482AC86F63001CEDD9 /* SearchViewController.swift in Sources */,
 				7B2350C12AB73754003F9C05 /* ChartLoadStockProfile.swift in Sources */,
 				7B2350BA2AB73754003F9C05 /* ChartDataLoadManager.swift in Sources */,
@@ -364,6 +371,7 @@
 				7B2350AF2AB7372A003F9C05 /* ChartCourseAPI.swift in Sources */,
 				7B2350BC2AB73754003F9C05 /* ChartConfigurePlot.swift in Sources */,
 				7B2350BD2AB73754003F9C05 /* ChartFilterData.swift in Sources */,
+				7BBB99A82ACC6D94000CE676 /* StockTimeManager.swift in Sources */,
 				7B490EFA2AB625C400787CEC /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

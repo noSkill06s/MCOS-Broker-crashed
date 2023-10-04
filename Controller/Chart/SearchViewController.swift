@@ -35,6 +35,16 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         
+        // Erstellen der benutzerdefinierten Farbe
+        let customBorderColor = UIColor(red: 9.0/255.0, green: 132.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        // Randfarbe setzen
+        searchBar.layer.borderColor = customBorderColor.cgColor
+        // Randbreite setzen
+        searchBar.layer.borderWidth = 1.0
+        // Eckenradius setzen, wenn gewünscht
+        searchBar.layer.cornerRadius = 5.0
+        searchBar.clipsToBounds = true
+        
         let fetchStockListAPI = FetchStockListAPI()
         fetchStockListAPI.fetchStockList { [weak self] stockList in
             guard let self = self else { return }

@@ -17,20 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnD-54-UXl">
-                                <rect key="frame" x="75" y="743" width="242" height="56"/>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YnD-54-UXl">
+                                <rect key="frame" x="75" y="722" width="242" height="85"/>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YnD-54-UXl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="13w-Bj-slu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YnD-54-UXl" secondAttribute="trailing" constant="76" id="DR3-tE-yyg"/>
-                            <constraint firstItem="YnD-54-UXl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="640" id="NSV-e5-QLj"/>
-                            <constraint firstItem="YnD-54-UXl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-19" id="ODe-Cw-zti"/>
-                            <constraint firstItem="YnD-54-UXl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="Ztf-Qq-f8Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YnD-54-UXl" secondAttribute="trailing" constant="76" id="jFz-VH-JPp"/>
-                            <constraint firstItem="YnD-54-UXl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-19" id="qVB-UV-Mqd"/>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="619" id="EUs-pE-Q1g"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YnD-54-UXl" secondAttribute="bottom" constant="11" id="JFE-Ta-Pih"/>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="bx9-i9-Ytr"/>
+                            <constraint firstItem="YnD-54-UXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wRU-oU-lBd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="vAS-C0-flW"/>
@@ -51,23 +48,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="en6-go-eL1" customClass="CPTGraphHostingView">
-                                <rect key="frame" x="0.0" y="156" width="377" height="444"/>
+                                <rect key="frame" x="13" y="183" width="364" height="354"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2V-B8-Vx7">
-                                <rect key="frame" x="86" y="697" width="220" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Timeframe">
-                                    <color key="baseBackgroundColor" systemColor="systemPurpleColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="timeFrameButtonTapped:" destination="Mfi-t5-jdn" eventType="touchUpInside" id="luV-KD-IaB"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CompanyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZs-Id-HyX">
-                                <rect key="frame" x="0.0" y="120" width="125" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CompanyName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZs-Id-HyX">
+                                <rect key="frame" x="7" y="120" width="118" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -87,8 +73,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pN3-Uh-bHR">
-                                <rect key="frame" x="0.0" y="146" width="125" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="range" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pN3-Uh-bHR">
+                                <rect key="frame" x="7" y="146" width="118" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
@@ -116,20 +102,47 @@
                                 <rect key="frame" x="161" y="789" width="88" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8j-mb-aSG">
-                                <rect key="frame" x="86" y="590" width="220" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8j-Ld-Nbf">
+                                <rect key="frame" x="13" y="545" width="167" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Analyse">
-                                    <color key="baseBackgroundColor" systemColor="systemPurpleColor"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Kaufen">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upL-ca-itJ">
+                                <rect key="frame" x="210" y="545" width="167" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Planen">
+                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2V-B8-Vx7">
+                                <rect key="frame" x="86" y="680" width="220" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Timeframe">
+                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="timeFrameButtonTapped:" destination="Mfi-t5-jdn" eventType="touchUpInside" id="luV-KD-IaB"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FhA-QE-zze">
-                                <rect key="frame" x="86" y="643" width="220" height="34"/>
+                                <rect key="frame" x="86" y="595" width="220" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8j-mb-aSG">
+                                <rect key="frame" x="86" y="637" width="220" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Analyse">
+                                    <color key="baseBackgroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iTH-Vr-KfW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -149,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4B-Jz-iX5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="1901"/>
+            <point key="canvasLocation" x="139.69465648854961" y="1900.7042253521129"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="c1E-yD-KA2">
@@ -328,14 +341,17 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

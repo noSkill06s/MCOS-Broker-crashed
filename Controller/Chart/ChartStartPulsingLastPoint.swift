@@ -10,24 +10,25 @@ import Foundation
 class PulsingManager {
     
     weak var viewController: ChartViewController? // Referenz zum Haupt-ViewController
+    var shouldDisplayPoint: Bool = true  // Instanzvariable
     
     init(controller: ChartViewController) {
         self.viewController = controller
     }
     
     @objc func startPulsingLastPoint() {
-        guard let viewController = self.viewController else { return }
-        
-        let stepSize = CGFloat(10.0)
-        // Verwenden Sie eine Bedingung, um zwischen den Größen zu wechseln
-        if viewController.lastPointSymbolSize.width > 10.0 {
-            viewController.lastPointSymbolSize = CGSize(width: viewController.lastPointSymbolSize.width - stepSize, height: viewController.lastPointSymbolSize.height - stepSize)
-        } else {
-            viewController.lastPointSymbolSize = CGSize(width: viewController.lastPointSymbolSize.width + stepSize, height: viewController.lastPointSymbolSize.height + stepSize)
+        guard let viewController = self.viewController else {
+            return
         }
-        
+        // Umschalten zwischen Sichtbar und Unsichtbar
+        shouldDisplayPoint.toggle()
+
+        // Setzen Sie die Größe entsprechend
+        let newSize = shouldDisplayPoint ? CGSize(width: 13.0, height: 13.0) : CGSize(width: 0.0, height: 0.0)
+        viewController.stockTimeManager?.lastPointSymbolSize = newSize
         DispatchQueue.main.async {
             viewController.graphView.hostedGraph?.reloadData()
         }
     }
 }
+

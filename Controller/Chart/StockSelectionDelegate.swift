@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol StockSelectionDelegate: AnyObject {
+    func stockWasSelected(_ stockSymbol: String)
+}

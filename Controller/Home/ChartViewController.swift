@@ -8,13 +8,9 @@
 import CorePlot
 import UIKit
 
-protocol StockSelectionDelegate: AnyObject {
-    func stockWasSelected(_ stockSymbol: String)
-}
-
 class ChartViewController: UIViewController, UITextFieldDelegate, CPTBarPlotDataSource, CALayerDelegate, CPTAxisDelegate {
     
-    
+    var stockTimeManager: StockTimeManager?
     var currentChartTimeFrame: TimeFrame = .oneMinutes // Start Timeframe
     var searchStock = "AAPL"
     var stockProfileManager: StockProfileManager?
@@ -33,15 +29,76 @@ class ChartViewController: UIViewController, UITextFieldDelegate, CPTBarPlotData
     @IBOutlet var stockProfileCompanyName: UILabel!
     @IBOutlet var stockProfileCurrency: UILabel!
     @IBOutlet var stockProfileImage: UIImageView!
-    @IBOutlet var textField: UITextField!
-    
-    var updateTimer: Timer?
-    var pulsingTimer: Timer?
-    var lastPointSymbolSize: CGSize = CGSize(width: 13.0, height: 13.0)
-    
+    @IBOutlet var textField: UITextField!    
     @IBOutlet weak var timeFrameButton: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        stockProfileManager = StockProfileManager(controller: self)
+        stockProfileManager?.loadStockProfile()
+        stockDataManager = StockDataManager(controller: self)
+        stockDataManager?.updateLastDataPoint()
+        startPulsingLastPoint = PulsingManager(controller: self)
+        startPulsingLastPoint?.startPulsingLastPoint()
+        chartDataLoadManager = ChartDataManager(controller: self)
+        chartDataLoadManager?.loadChartData(with: currentChartTimeFrame)
+        let initialTimeFrameLabel = timeFrameToReadableString(currentChartTimeFrame)
+        timeFrameButton.setTitle("Timeframe: \(initialTimeFrameLabel)", for: .normal)
+        
+        // Erstellen der benutzerdefinierten Farbe
+        let customBorderColor = UIColor(red: 9.0/255.0, green: 132.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        // Randfarbe setzen
+        textField.layer.borderColor = customBorderColor.cgColor
+        // Randbreite setzen
+        textField.layer.borderWidth = 1.0
+        // Eckenradius setzen, wenn gewünscht
+        textField.layer.cornerRadius = 5.0
+        textField.clipsToBounds = true
+        textField.delegate = self
+        
+        graphView.layer.borderColor = customBorderColor.cgColor
+        graphView.layer.borderWidth = 1.0
+        graphView.layer.cornerRadius = 5.0
+        graphView.clipsToBounds = true
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            initializeGraph()
+        }
+    }
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        stockTimeManager = StockTimeManager(stockDataManager: stockDataManager, pulsingManager: startPulsingLastPoint)
+        stockTimeManager?.startTimers()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stockTimeManager?.stopTimers()
+    }
     
-    // Funktion zum Umwandeln des TimeFrame-Enums in lesbaren Text
+    func initializeGraph() {
+        configureGraphView(for: graphView, plotData: plotData, delegate: self, traitCollection: self.traitCollection)
+        configurePlot(for: graphView, dataSource: self, delegate: self)
+    }
+    
+    @IBAction func timeFrameButtonTapped(_ sender: UIButton) {
+        presentTimeFrameSelector(in: self) { [weak self] timeFrame in
+            guard let self = self else { return }
+            
+            self.currentChartTimeFrame = timeFrame
+            self.chartDataLoadManager?.loadChartData(with: timeFrame)
+            
+            // Button-Titel auf den ausgewählten TimeFrame aktualisieren
+            let timeFrameLabel = self.timeFrameToReadableString(timeFrame)
+            sender.setTitle("Timeframe: \(timeFrameLabel)", for: .normal)
+        }
+    }
+
     func timeFrameToReadableString(_ timeFrame: TimeFrame) -> String {
         switch timeFrame {
         case .oneMinutes:
@@ -64,73 +121,12 @@ class ChartViewController: UIViewController, UITextFieldDelegate, CPTBarPlotData
             return "1M Chart"
         }
     }
-
-    // Button-Aktion für die TimeFrame-Auswahl
-    @IBAction func timeFrameButtonTapped(_ sender: UIButton) {
-        presentTimeFrameSelector(in: self) { [weak self] timeFrame in
-            guard let self = self else { return }
-            
-            self.currentChartTimeFrame = timeFrame
-            self.chartDataLoadManager?.loadChartData(with: timeFrame)
-            
-            // Button-Titel auf den ausgewählten TimeFrame aktualisieren
-            let timeFrameLabel = self.timeFrameToReadableString(timeFrame)
-            sender.setTitle("Timeframe: \(timeFrameLabel)", for: .normal)
-        }
-    }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        stockProfileManager = StockProfileManager(controller: self)
-        stockProfileManager?.loadStockProfile()
-        stockDataManager = StockDataManager(controller: self)
-        stockDataManager?.updateLastDataPoint()
-        startPulsingLastPoint = PulsingManager(controller: self)
-        startPulsingLastPoint?.startPulsingLastPoint()
-        chartDataLoadManager = ChartDataManager(controller: self)
-        chartDataLoadManager?.loadChartData(with: currentChartTimeFrame)
-        
-        updateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: stockDataManager!, selector: #selector(StockDataManager.updateLastDataPoint), userInfo: nil, repeats: true)
-        if let startPulsingLastPoint = startPulsingLastPoint {
-            pulsingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: startPulsingLastPoint, selector: #selector(PulsingManager.startPulsingLastPoint), userInfo: nil, repeats: true)
-        }
-        
-        // Initialer Button-Titel basierend auf currentChartTimeFrame
-        let initialTimeFrameLabel = timeFrameToReadableString(currentChartTimeFrame)
-        timeFrameButton.setTitle("Timeframe: \(initialTimeFrameLabel)", for: .normal)
-        
-        //
-        textField.delegate = self
-    }
-
-    func initializeGraph() {
-        configureGraphView(for: graphView, plotData: plotData, delegate: self, traitCollection: self.traitCollection)
-        configurePlot(for: graphView, dataSource: self, delegate: self)
-    }
-
-    // Veränderungen im Viewcontroller registrieren
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            initializeGraph() // Graphen neu initialisieren, wenn sich der Farbmodus ändert
-        }
-    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let searchViewController = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
             searchViewController.delegate = self
             self.navigationController?.pushViewController(searchViewController, animated: true)
         }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        updateTimer?.invalidate()
-        updateTimer = nil
-        pulsingTimer?.invalidate()
-        pulsingTimer = nil
     }
 }
 
@@ -170,8 +166,12 @@ extension ChartViewController: CPTScatterPlotDataSource, CPTScatterPlotDelegate 
     func symbol(for plot: CPTScatterPlot, record idx: UInt) -> CPTPlotSymbol? {
         if idx == self.plotData.count - 1 {  // Überprüfen, ob es der letzte Datenpunkt ist
             let plotSymbol = CPTPlotSymbol.ellipse()
-            plotSymbol.fill = CPTFill(color: CPTColor.purple())
-            plotSymbol.size = lastPointSymbolSize  // Verwenden Sie die Instanzvariable
+            plotSymbol.fill = CPTFill(color: CPTColor.blue())
+            
+            // Abrufen der `lastPointSymbolSize` aus der `StockTimeManager`-Instanz
+            let symbolSize = stockTimeManager?.lastPointSymbolSize ?? CGSize(width: 13.0, height: 13.0)
+            
+            plotSymbol.size = symbolSize  // Verwenden Sie die Instanzvariable
             return plotSymbol
         }
         return nil  // Für andere Datenpunkte kein spezielles Symbol
